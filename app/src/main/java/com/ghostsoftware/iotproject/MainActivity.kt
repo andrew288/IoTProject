@@ -4,17 +4,24 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
+import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 import java.io.InputStream
 import java.security.KeyFactory
@@ -30,7 +37,7 @@ import javax.net.ssl.SSLContext
 class MainActivity : ComponentActivity() {
     private val mqttServerUri = "ssl://a34bt8gk372w9w-ats.iot.us-east-2.amazonaws.com:8883"
     private val clientId = UUID.randomUUID()
-    private val topic = "topic_test"
+    private val topic = "outTopic"
     private val qos = 0
 
     private lateinit var mqttClient: MqttClient
@@ -46,8 +53,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Box(modifier = Modifier.fillMaxSize()){
-                        Text(text = responseSubcribe.value, color = Color.Black)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Button(onClick = {
+                            val message = "0"
+                            mqttClient.publish("inTopic", MqttMessage(message.toByteArray()) )
+                        }) {
+                            Text(text = "Pusblish Off")
+                        }
+                        Button(onClick = {
+                            val message = "1"
+                            mqttClient.publish("inTopic", MqttMessage(message.toByteArray()) )
+                        }) {
+                            Text(text = "Pusblish On")
+                        }
                     }
 
                 }
