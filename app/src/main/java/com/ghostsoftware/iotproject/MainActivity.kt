@@ -109,7 +109,6 @@ class MainActivity : ComponentActivity() {
                 mqttClient.connect(options)
                 mqttClient.subscribe(topic, qos) { _, message ->
                     val luminosity = message.payload.toString(Charsets.UTF_8)
-                    Log.d("TEST-MQTT",luminosity)
                     responseSubcribe.value = responseSubcribe.value  + "MESSAGE: " + luminosity
                 }
             } catch (e: Exception) {
