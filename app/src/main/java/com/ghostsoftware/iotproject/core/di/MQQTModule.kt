@@ -1,8 +1,8 @@
 package com.ghostsoftware.iotproject.core.di
 
 import android.content.Context
-import com.ghostsoftware.iotproject.client.MqttClientProvideImpl
-import com.ghostsoftware.iotproject.client.MqttClientProvider
+import com.ghostsoftware.iotproject.data.network.MqttClientProvideImpl
+import com.ghostsoftware.iotproject.data.network.MqttClientProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 object MQQTModule {
     @Provides
     @Singleton
-    fun provideMqttClientProvider(@ApplicationContext appContext: Context): MqttClientProvider{
+    fun provideMqttClientProvider(@ApplicationContext appContext: Context): MqttClientProvider {
         return MqttClientProvideImpl(appContext)
     }
 }
