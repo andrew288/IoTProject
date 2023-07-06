@@ -1,4 +1,4 @@
-package com.ghostsoftware.iotproject.screens.main
+package com.ghostsoftware.iotproject.uis.main.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 
 @Composable
-fun HorarioScreen(navController: NavHostController) {
+fun AccountScreen(navController: NavHostController, navControllerApp: NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(text = "HORARIOS SCREEN")
+        Text(text = "ACCOUNT SCREEN")
     }
 }

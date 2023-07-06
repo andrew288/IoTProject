@@ -1,4 +1,4 @@
-package com.ghostsoftware.iotproject.screens
+package com.ghostsoftware.iotproject.uis
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

@@ -1,14 +1,15 @@
-package com.ghostsoftware.iotproject
+package com.ghostsoftware.iotproject.uis.main
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.ghostsoftware.iotproject.client.ClientMQTT
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DataSensorViewModel(
+@HiltViewModel
+class SensorViewModel @Inject constructor(
     private val clientMQTT: ClientMQTT
-): ViewModel() {
-    private val TAG = "DatosSensorViewModel"
+) : ViewModel() {
     private val _dataList = mutableStateListOf<String>()
     val dataList: List<String> get() = _dataList
 
@@ -17,9 +18,12 @@ class DataSensorViewModel(
         val topic = "sensor/data"
         val qos = 1
         clientMQTT.subscribe(topic, qos) { data ->
-            Log.d(TAG, "Received data: $data")
             _dataList.add(data)
         }
+    }
+
+    fun publishMessage(topic: String, q0s: String) {
+        clientMQTT.publish(topic, q0s)
     }
 
     override fun onCleared() {

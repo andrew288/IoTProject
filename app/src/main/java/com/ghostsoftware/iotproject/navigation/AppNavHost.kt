@@ -5,15 +5,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ghostsoftware.iotproject.client.ClientMQTT
-import com.ghostsoftware.iotproject.screens.LoginScreen
-import com.ghostsoftware.iotproject.screens.MainScreen
-import com.ghostsoftware.iotproject.screens.RegisterScreen
-import com.ghostsoftware.iotproject.screens.StartScreen
+import com.ghostsoftware.iotproject.uis.auth.screen.LoginScreen
+import com.ghostsoftware.iotproject.uis.main.screen.MainScreen
+import com.ghostsoftware.iotproject.uis.auth.screen.RegisterScreen
+import com.ghostsoftware.iotproject.uis.StartScreen
+import com.ghostsoftware.iotproject.uis.main.SensorViewModel
 
 @Composable
 fun AppNavHost(
-    clientMQTT: ClientMQTT,
+    sensorViewModel: SensorViewModel,
     navController: NavHostController = rememberNavController(),
     startDestination: String = Routes.ScreenMain.route
 ){
@@ -25,7 +25,7 @@ fun AppNavHost(
             RegisterScreen(navController)
         }
         composable(Routes.ScreenMain.route){
-            MainScreen(navController, clientMQTT)
+            MainScreen(navController, sensorViewModel)
         }
         composable(Routes.ScreenStart.route){
             StartScreen(navController)

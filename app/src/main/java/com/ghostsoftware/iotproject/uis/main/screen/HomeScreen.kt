@@ -1,4 +1,4 @@
-package com.ghostsoftware.iotproject.screens.main
+package com.ghostsoftware.iotproject.uis.main.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.ghostsoftware.iotproject.client.ClientMQTT
+import com.ghostsoftware.iotproject.uis.main.SensorViewModel
 
 @Composable
-fun HomeScreen(navController: NavHostController, clientMQTT: ClientMQTT) {
+fun HomeScreen(navController: NavHostController, sensorViewModel: SensorViewModel) {
 
     var buttonColor1 = remember {
         mutableStateOf(Color.Gray)
@@ -39,26 +39,32 @@ fun HomeScreen(navController: NavHostController, clientMQTT: ClientMQTT) {
         Spacer(modifier = Modifier.height(20.dp))
         Row() {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = buttonColor1.value, contentColor = Color.Black),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = buttonColor1.value,
+                    contentColor = Color.Black
+                ),
                 onClick = {
                     buttonColor1.value = Color.Green
                     buttonColor2.value = Color.Gray
-                clientMQTT.publish("on_off", "1")
-            }) {
+                    sensorViewModel.publishMessage("on_off", "1")
+                }) {
                 Text(text = "ON")
             }
             Spacer(modifier = Modifier.width(10.dp))
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = buttonColor2.value, contentColor = Color.Black),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = buttonColor2.value,
+                    contentColor = Color.Black
+                ),
                 onClick = {
                     buttonColor1.value = Color.Gray
                     buttonColor2.value = Color.Red
-                clientMQTT.publish("on_off", "0")
-            }) {
+                    sensorViewModel.publishMessage("on_off", "0")
+                }) {
                 Text(text = "OFF")
             }
         }
-        
+
     }
 
 }
