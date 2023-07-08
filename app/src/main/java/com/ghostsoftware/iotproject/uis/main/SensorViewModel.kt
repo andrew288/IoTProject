@@ -20,9 +20,9 @@ class SensorViewModel @Inject constructor(
             }
         }
     }
-    fun publishMessage(topic: String, q0s: String) {
+    fun publishMessage(topic: String, message: String) {
         if (clientMQTT.isConnected()) {
-            clientMQTT.publish(topic, q0s)
+            clientMQTT.publish(topic, message)
         }
     }
     override fun onCleared() {
