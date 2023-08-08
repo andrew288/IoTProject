@@ -9,11 +9,13 @@ import com.ghostsoftware.iotproject.uis.auth.screen.LoginScreen
 import com.ghostsoftware.iotproject.uis.main.screen.MainScreen
 import com.ghostsoftware.iotproject.uis.auth.screen.RegisterScreen
 import com.ghostsoftware.iotproject.uis.StartScreen
-import com.ghostsoftware.iotproject.uis.main.SensorViewModel
+import com.ghostsoftware.iotproject.uis.main.screen.screen_home.HomeViewModel
+import com.ghostsoftware.iotproject.uis.main.screen.screen_sensor.SensorDataViewModel
 
 @Composable
 fun AppNavHost(
-    sensorViewModel: SensorViewModel,
+    homeViewModel: HomeViewModel,
+    sensorDataViewModel: SensorDataViewModel,
     navController: NavHostController = rememberNavController(),
     startDestination: String = Routes.ScreenMain.route
 ){
@@ -25,7 +27,7 @@ fun AppNavHost(
             RegisterScreen(navController)
         }
         composable(Routes.ScreenMain.route){
-            MainScreen(navController, sensorViewModel)
+            MainScreen(navController, homeViewModel, sensorDataViewModel)
         }
         composable(Routes.ScreenStart.route){
             StartScreen(navController)

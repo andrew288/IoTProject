@@ -93,4 +93,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-android-compiler:2.44"
 
+    // librerias para graficos
+    implementation ("com.himanshoe:charty:2.0.0-alpha01")
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // Color Picker Compose
+    implementation "com.github.skydoves:colorpicker-compose:1.0.0"
+
 }
