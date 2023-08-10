@@ -10,13 +10,15 @@ import com.ghostsoftware.iotproject.navigation.bottomBar.BottomBarScreen
 import com.ghostsoftware.iotproject.navigation.bottomBar.BottomNavGraph
 import com.ghostsoftware.iotproject.uis.main.screen.screen_home.HomeViewModel
 import com.ghostsoftware.iotproject.uis.main.screen.screen_sensor.SensorDataViewModel
+import com.ghostsoftware.iotproject.uis.pagingSensor.SensorViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
     navControllerApp: NavHostController,
     homeViewModel: HomeViewModel,
-    sensorDataViewModel: SensorDataViewModel
+    sensorDataViewModel: SensorDataViewModel,
+    sensorViewModel: SensorViewModel
 ) {
     val navController = rememberNavController()
     val navigationItems = listOf(
@@ -27,6 +29,6 @@ fun MainScreen(
     )
 
     Scaffold(bottomBar = { BottomNavigationBar(navController = navController, items = navigationItems) }){
-        BottomNavGraph(navController = navController, navControllerApp, homeViewModel, sensorDataViewModel)
+        BottomNavGraph(navController = navController, navControllerApp, homeViewModel, sensorDataViewModel,sensorViewModel)
     }
 }
