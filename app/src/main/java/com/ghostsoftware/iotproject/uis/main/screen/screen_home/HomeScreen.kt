@@ -37,7 +37,7 @@ import androidx.navigation.NavHostController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavHostController, homeViewModel: HomeViewModel) {
+fun HomeScreen(homeViewModel: HomeViewModel) {
 
     val stateLed: Boolean by homeViewModel.stateLed.observeAsState(false)
     val showColorPicker: Boolean by homeViewModel.showColorPicker.observeAsState(false)

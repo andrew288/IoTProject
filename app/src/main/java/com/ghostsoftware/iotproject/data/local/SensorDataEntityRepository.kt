@@ -1,7 +1,7 @@
-package com.ghostsoftware.iotproject.data.network.local
+package com.ghostsoftware.iotproject.data.local
 
 import androidx.paging.PagingSource
-import com.ghostsoftware.iotproject.models.SensorDataEntity
+import com.ghostsoftware.iotproject.data.local.entity.SensorDataEntity
 import javax.inject.Inject
 
 class SensorDataEntityRepository @Inject constructor(

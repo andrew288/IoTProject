@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ghostsoftware.iotproject.domain.SensorDomain
+import com.ghostsoftware.iotproject.models.SensorDomain
 
 @Composable
 fun SensorList(

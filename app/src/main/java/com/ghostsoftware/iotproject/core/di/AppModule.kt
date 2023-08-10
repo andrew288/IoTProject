@@ -2,8 +2,8 @@ package com.ghostsoftware.iotproject.core.di
 
 import android.content.Context
 import androidx.room.Room
-import com.ghostsoftware.iotproject.data.network.local.AppDatabase
-import com.ghostsoftware.iotproject.data.network.local.SensorDataEntityDao
+import com.ghostsoftware.iotproject.data.local.AppDatabase
+import com.ghostsoftware.iotproject.data.local.SensorDataEntityDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

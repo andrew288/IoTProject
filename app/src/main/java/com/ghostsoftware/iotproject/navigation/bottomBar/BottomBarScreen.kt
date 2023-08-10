@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -32,8 +33,8 @@ sealed class BottomBarScreen(
     )
 
     object Account: BottomBarScreen(
-        route = "ACCOUNT",
-        title = "Account",
-        icon = Icons.Default.AccountCircle
+        route = "HISTORICO",
+        title = "Historico",
+        icon = Icons.Default.List
     )
 }

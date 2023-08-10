@@ -9,13 +9,12 @@ import com.ghostsoftware.iotproject.uis.main.screen.HorarioScreen
 import com.ghostsoftware.iotproject.uis.main.screen.screen_sensor.SensorScreen
 import com.ghostsoftware.iotproject.uis.main.screen.screen_home.HomeViewModel
 import com.ghostsoftware.iotproject.uis.main.screen.screen_sensor.SensorDataViewModel
-import com.ghostsoftware.iotproject.uis.pagingSensor.PagingSensorScreen
-import com.ghostsoftware.iotproject.uis.pagingSensor.SensorViewModel
+import com.ghostsoftware.iotproject.uis.main.screen.pagingSensor.PagingSensorScreen
+import com.ghostsoftware.iotproject.uis.main.screen.pagingSensor.SensorViewModel
 
 @Composable
 fun BottomNavGraph(
     navController: NavHostController,
-    navControllerApp: NavHostController,
     homeViewModel: HomeViewModel,
     sensorDataViewModel: SensorDataViewModel,
     sensorViewModel: SensorViewModel,
@@ -23,10 +22,10 @@ fun BottomNavGraph(
     NavHost(navController = navController, startDestination = BottomBarScreen.Home.route){
 
         composable(route = BottomBarScreen.Home.route){
-            HomeScreen(navController, homeViewModel)
+            HomeScreen(homeViewModel)
         }
         composable(route= BottomBarScreen.Sensor.route){
-            SensorScreen(navController, sensorDataViewModel)
+            SensorScreen(sensorDataViewModel)
         }
         composable(route= BottomBarScreen.Horarios.route){
             HorarioScreen(navController)

@@ -1,4 +1,4 @@
-package com.ghostsoftware.iotproject.models
+package com.ghostsoftware.iotproject.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

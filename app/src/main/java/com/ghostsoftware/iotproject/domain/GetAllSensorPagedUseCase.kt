@@ -4,12 +4,12 @@ package com.ghostsoftware.iotproject.domain
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import androidx.paging.map
-import com.ghostsoftware.iotproject.data.network.local.SensorDataEntityRepository
-import com.ghostsoftware.iotproject.models.SensorDataEntity
+import com.ghostsoftware.iotproject.data.local.SensorDataEntityRepository
+import com.ghostsoftware.iotproject.data.local.entity.SensorDataEntity
+import com.ghostsoftware.iotproject.models.SensorDomain
+import com.ghostsoftware.iotproject.models.toSensorDomain
 
-import dagger.Component.Factory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -31,7 +31,7 @@ class GetAllSensorPagedUseCase @Inject constructor(
         .flow.map {
             value: PagingData<SensorDataEntity> ->
             value.map {
-                sensor : SensorDataEntity->
+                sensor : SensorDataEntity ->
                 sensor.toSensorDomain()
             }
 

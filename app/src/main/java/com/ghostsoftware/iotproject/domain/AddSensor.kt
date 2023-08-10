@@ -1,6 +1,8 @@
 
 package com.ghostsoftware.iotproject.domain
-import com.ghostsoftware.iotproject.data.network.local.SensorDataEntityRepository
+import com.ghostsoftware.iotproject.data.local.SensorDataEntityRepository
+import com.ghostsoftware.iotproject.models.SensorDomain
+import com.ghostsoftware.iotproject.models.toSensorDataEntity
 
 import javax.inject.Inject
 
