@@ -3,8 +3,11 @@ package com.ghostsoftware.iotproject.models
 import com.google.gson.Gson
 
 data class SensorLuminosidad(
-    val data: Float,
-    val datetime: String,
+    val value: Float,
+    val date: String,
+    val time: String,
+    val unit: String,
+    val notes: String
 ){
     companion object {
         fun fromJson(json: String): SensorLuminosidad? {

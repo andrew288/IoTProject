@@ -6,11 +6,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,7 +26,9 @@ import com.himanshoe.charty.line.model.LineData
 
 @Composable
 fun SensorScreen(navController: NavHostController, sensorViewModel: SensorDataViewModel) {
-    val datosSensor: List<LineData> = sensorViewModel.dataList
+    val dataSensor: List<LineData> = sensorViewModel.dataList
+    val alertSensor: String by sensorViewModel.alert.observeAsState("No information")
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -50,17 +53,19 @@ fun SensorScreen(navController: NavHostController, sensorViewModel: SensorDataVi
                 Text(text = "Actualizar conexión")
             }
             Spacer(modifier = Modifier.height(20.dp))
-            if (datosSensor.size != 0) {
-                LinearChart(datosSensor)
+            if (dataSensor.isNotEmpty()) {
+                LinearChart(dataSensor)
             }
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(text = alertSensor)
         }
     }
 }
 
 @Composable
-fun LinearChart(datosSensor: List<LineData>) {
+fun LinearChart(dataSensor: List<LineData>) {
     CurveLineChart(
-        dataCollection = ChartDataCollection(datosSensor),
+        dataCollection = ChartDataCollection(dataSensor),
         modifier = Modifier
             .padding(start = 12.dp, top = 10.dp)
             .height(300.dp),
@@ -74,6 +79,5 @@ fun LinearChart(datosSensor: List<LineData>) {
             axisColor = Color.Gray,
             axisStroke = 1.0f
         ),
-
-        )
+    )
 }
